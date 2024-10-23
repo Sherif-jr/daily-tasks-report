@@ -75,6 +75,33 @@ class TaskService {
       }
     }
   }
+  static async deleteTask(taskId: string) {
+    try {
+      await axiosInstance.delete(`${ApiEndpoints.TASKS}/${taskId}`);
+      return {
+        success: true as const,
+      };
+    } catch (error: AxiosError | unknown) {
+      if (error instanceof AxiosError) {
+        toast.error(error.request?.data || error.message);
+        return {
+          success: false as const,
+          error: error.request?.data || error.message,
+        };
+      } else if (error instanceof Error) {
+        toast.error("Something went wrong");
+        return {
+          success: false as const,
+          error: error.message,
+        };
+      } else {
+        return {
+          success: false as const,
+          error: "An unknown error occurred",
+        };
+      }
+    }
+  }
 }
 
 export default TaskService;

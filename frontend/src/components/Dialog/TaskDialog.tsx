@@ -23,6 +23,7 @@ interface EmployeeDialogProps {
   children: React.ReactNode;
   onOk?(values: TaskInput | Task): void | string | Promise<void | string>;
   onCancel?(): void | Promise<void>;
+  onDelete?(id: string): void | Promise<void>;
   initialValues?: Partial<Task>;
   employee: Employee;
 }
@@ -31,6 +32,7 @@ const TaskDialog: FC<EmployeeDialogProps> = ({
   description,
   children,
   onOk,
+  onDelete,
   initialValues,
   employee,
 }) => {
@@ -188,6 +190,18 @@ const TaskDialog: FC<EmployeeDialogProps> = ({
                   <span className="text-red-500 text-xs">{formError}</span>
                 )}
                 <DialogFooter>
+                  {onDelete && (
+                    <Button
+                      type="button"
+                      variant="destructive"
+                      onClick={async () => {
+                        await onDelete?.(initialValues?._id || "");
+                        setDialogOpen(false);
+                      }}
+                    >
+                      Delete
+                    </Button>
+                  )}
                   <Button type="submit">
                     {initialValues?._id ? "Save changes" : "Add"}
                   </Button>

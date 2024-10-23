@@ -8,11 +8,13 @@ import Task, { TaskInput } from "@/interfaces/task.interface";
 interface EmployeeExtraInfoProps {
   onAddNew?: (values: TaskInput) => void | string | Promise<void | string>;
   onUpdate?: (values: Task) => void | string | Promise<void | string>;
+  onDelete?: (id: string) => void | Promise<void>;
   employee: EmployeeWithTasks;
 }
 const EmployeeExtraInfo: FC<EmployeeExtraInfoProps> = ({
   onAddNew,
   onUpdate,
+  onDelete,
   employee,
 }) => {
   return (
@@ -25,6 +27,7 @@ const EmployeeExtraInfo: FC<EmployeeExtraInfoProps> = ({
             description=""
             employee={employee}
             onOk={onUpdate}
+            onDelete={onDelete}
             initialValues={task}
           >
             <Tag key={task._id}>

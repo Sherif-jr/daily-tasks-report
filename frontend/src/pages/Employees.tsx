@@ -5,6 +5,7 @@ import useEmployee from "@/hooks/useEmployee";
 import { Employee, EmployeeInput } from "@/interfaces/employee.interface";
 import TaskService from "@/services/TaskService";
 import { useState } from "react";
+import { toast } from "react-toastify";
 
 const Employees = () => {
   const [selectedDate, setSelectedDate] = useState(new Date());
@@ -57,10 +58,17 @@ const Employees = () => {
               employee={row}
               onAddNew={async (values) => {
                 await TaskService.addTaskToEmployee(values);
+                toast.success("Task added successfully");
                 await fetchEmployees();
               }}
               onUpdate={async (values) => {
                 await TaskService.updateTask(values);
+                toast.success("Task updated successfully");
+                await fetchEmployees();
+              }}
+              onDelete={async (id) => {
+                await TaskService.deleteTask(id);
+                toast.success("Task deleted successfully");
                 await fetchEmployees();
               }}
             />
