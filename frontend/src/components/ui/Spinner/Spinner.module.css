@@ -1,0 +1,44 @@
+.loader {
+  width: var(--size);
+  height: var(--size);
+  border: 3px solid #fff;
+  border-radius: 50%;
+  display: inline-block;
+  position: relative;
+  box-sizing: border-box;
+  animation: rotation 1s linear infinite;
+}
+.loader::after {
+  content: "";
+  box-sizing: border-box;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: var(--size-after);
+  height: var(--size-after);
+  border-radius: 50%;
+  border: 3px solid transparent;
+  border-bottom-color: #ff3d00;
+}
+
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+.small {
+  --size: 15px;
+  --size-after: 12.5px;
+}
+.medium {
+  --size: 24px;
+  --size-after: 20px;
+}
+.large {
+  --size: 48px;
+  --size-after: 40px;
+}
