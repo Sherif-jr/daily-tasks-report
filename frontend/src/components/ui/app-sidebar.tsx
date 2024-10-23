@@ -25,7 +25,7 @@ export function AppSidebar() {
           <SidebarGroupLabel>Pages</SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
-              <SidebarMenuItem>
+              {/* <SidebarMenuItem>
                 <SidebarMenuButton
                   isActive={pathname === "/"}
                   onClick={() => {
@@ -35,7 +35,8 @@ export function AppSidebar() {
                   <LayoutDashboard className="mr-2 h-4 w-4" />
                   Dashboard
                 </SidebarMenuButton>
-              </SidebarMenuItem>
+              </SidebarMenuItem> */}
+
               <SidebarMenuItem>
                 <SidebarMenuButton
                   isActive={pathname === "/employees"}
@@ -44,10 +45,11 @@ export function AppSidebar() {
                   }}
                 >
                   <User className="mr-2 h-4 w-4" />
-                  Employees
+                  Employees Tasks
                 </SidebarMenuButton>
               </SidebarMenuItem>
-              <SidebarMenuItem>
+
+              {/* <SidebarMenuItem>
                 <SidebarMenuButton
                   isActive={pathname === "/tasks"}
                   onClick={() => {
@@ -57,7 +59,7 @@ export function AppSidebar() {
                   <NotepadText className="mr-2 h-4 w-4" />
                   Tasks
                 </SidebarMenuButton>
-              </SidebarMenuItem>
+              </SidebarMenuItem> */}
             </SidebarMenu>
           </SidebarGroupContent>
         </SidebarGroup>
