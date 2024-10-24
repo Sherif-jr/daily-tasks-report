@@ -1,6 +1,7 @@
 import DataTable from "@/components/DataTable";
 import EmployeeExtraInfo from "@/components/ExtraInfo/ExtraInfo";
 import { Calendar } from "@/components/ui/calendar";
+import { constructCorrectDate } from "@/helpers/dateHelpers";
 import useEmployee from "@/hooks/useEmployee";
 import { Employee, EmployeeInput } from "@/interfaces/employee.interface";
 import TaskService from "@/services/TaskService";
@@ -38,7 +39,10 @@ const Employees = () => {
         <Calendar
           mode="single"
           selected={selectedDate}
-          onSelect={(day) => setSelectedDate(day || new Date())}
+          onSelect={(_, selDay) => {
+            const correctDate = constructCorrectDate(selDay);
+            setSelectedDate(correctDate);
+          }}
           className="rounded-md border"
         />
       </div>
