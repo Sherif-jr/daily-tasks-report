@@ -29,6 +29,7 @@ const EmployeeExtraInfo: FC<EmployeeExtraInfoProps> = ({
             onOk={onUpdate}
             onDelete={onDelete}
             initialValues={task}
+            key={task._id}
           >
             <Tag key={task._id}>
               <div className="flex flex-col items-center">
