@@ -69,3 +69,7 @@ yarn
 ```bash
 yarn dev
 ```
+
+### Live Deployment
+
+[Vercel](https://daily-tasks-report.vercel.app)
