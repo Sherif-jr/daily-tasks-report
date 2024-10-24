@@ -26,7 +26,7 @@ The **Daily Tasks Report** application is a task management system designed to h
 ### Clone the repository:
 
 ```bash
-git clone <repo-url>
+git clone https://github.com/Sherif-jr/daily-tasks-report.git
 cd daily-tasks-report
 ```
 
@@ -70,6 +70,33 @@ yarn
 yarn dev
 ```
 
+### Setup up the app:
+
+1. Install dependencies for both front and backend.
+2. configure the .env files for both front and backend.
+3. Build the front end:
+
+```bash
+cd frontend
+yarn build
+```
+
+4. Build the backend:
+
+```bash
+cd backend
+yarn build
+```
+
+5. start backend:
+
+```bash
+yarn start
+```
+
+Now you can view the app at the port you specified or 3000.
+
+
 ### Live Deployment
 
-[Vercel](https://daily-tasks-report.vercel.app)
+[AWS](http://ec2-3-82-113-185.compute-1.amazonaws.com)
