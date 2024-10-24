@@ -3,8 +3,6 @@ import express from "express";
 import cors from "cors";
 import { monitorServer } from "./middleware/monitorServer";
 import router from "./router";
-import readline from "readline";
-import terminalDevHelper from "./helpers/terminalHelpers";
 import globalErrorHandler from "./middleware/globalErrorHandler";
 
 const app = express();
@@ -28,13 +26,6 @@ connectDB(MONGO_URI)
 
     const server = app.listen(port, () => {
       console.log("Server started on port", port);
-      terminalDevHelper(() => {
-        server.close(() => {
-          server.listen(port, () => {
-            console.log("Server restarted on port", port);
-          });
-        });
-      });
     });
   })
   .catch((error) => {
