@@ -38,7 +38,7 @@ const Employees = () => {
         <Calendar
           mode="single"
           selected={selectedDate}
-          onSelect={(_, selDay) => setSelectedDate(selDay)}
+          onSelect={(day) => setSelectedDate(day || new Date())}
           className="rounded-md border"
         />
       </div>
