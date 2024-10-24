@@ -39,9 +39,9 @@ export function AppSidebar() {
 
               <SidebarMenuItem>
                 <SidebarMenuButton
-                  isActive={pathname === "/employees"}
+                  isActive={pathname === "/"}
                   onClick={() => {
-                    navigate("/employees");
+                    navigate("/");
                   }}
                 >
                   <User className="mr-2 h-4 w-4" />

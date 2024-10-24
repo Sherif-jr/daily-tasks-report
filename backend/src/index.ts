@@ -5,6 +5,7 @@ import cors from "cors";
 import { monitorServer } from "./middleware/monitorServer";
 import router from "./router";
 import globalErrorHandler from "./middleware/globalErrorHandler";
+import path from "path";
 
 const app = express();
 
@@ -16,14 +17,16 @@ console.log({ envMongoUrl: process.env.MONGO_URI });
 
 connectDB(MONGO_URI)
   .then(() => {
+    app.use(express.static(path.join(__dirname, "../../frontend/dist")));
     app.use(cors());
     app.use(monitorServer());
     app.use(express.json());
     app.use("/api/v1", router);
     app.use(globalErrorHandler);
-    app.all("/", (req, res) => {
-      res.send("Hello World!");
+    app.all("/*", (req, res) => {
+      res.sendFile(path.join(__dirname, "../../frontend/dist/index.html"));
     });
+
     app.all("*", (req, res) => {
       res.status(404).json({ message: "Not found" });
     });
