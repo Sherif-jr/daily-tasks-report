@@ -38,16 +38,27 @@ class EmployeeDao {
   async updateEmployee(id: string, employee: Employee) {
     return await EmployeeModel.findByIdAndUpdate(id, employee, {
       new: true,
-    }).populate("tasks");
+    });
   }
   async deleteEmployee(id: string) {
     return await EmployeeModel.findByIdAndDelete(id);
   }
   async getEmployeeTasks(id: string) {
-    return await EmployeeModel.findById(id);
-  }
-  async getEmployeeTask(id: string, taskId: string) {
-    return await EmployeeModel.findById(id).populate("tasks", taskId);
+    //get the employee and their tasks
+    const employeeTask = await EmployeeModel.aggregate([
+      {
+        $match: { _id: id },
+      },
+      {
+        $lookup: {
+          from: "tasks",
+          localField: "_id",
+          foreignField: "employee",
+          as: "tasks",
+        },
+      },
+    ]);
+    return employeeTask;
   }
 }
 

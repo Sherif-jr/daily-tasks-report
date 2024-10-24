@@ -43,16 +43,6 @@ class EmployeeController {
     });
   });
 
-  static getEmployeeTask = tryCatch(async function (req, res) {
-    const id = (req.params as { id: string }).id;
-    const taskId = (req.params as { taskId: string }).taskId;
-    const employeeTask = await employeeDao.getEmployeeTask(id, taskId);
-    res.json({
-      data: employeeTask,
-      message: "Get employee task",
-    });
-  });
-
   static updateEmployee = tryCatch(async function (req, res) {
     const id = (req.params as { id: string }).id;
     const employee = req.body as Employee;
