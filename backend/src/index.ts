@@ -11,6 +11,9 @@ const app = express();
 const port = process.env.PORT || 3000;
 const MONGO_URI =
   process.env.MONGO_URI || "mongodb://127.0.0.1:27017/tasksReport";
+console.log({ MONGO_URI });
+console.log({ envMongoUrl: process.env.MONGO_URI });
+
 connectDB(MONGO_URI)
   .then(() => {
     app.use(cors());
