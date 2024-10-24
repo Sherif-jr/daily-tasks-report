@@ -4,6 +4,7 @@ import cors from "cors";
 import { monitorServer } from "./middleware/monitorServer";
 import router from "./router";
 import globalErrorHandler from "./middleware/globalErrorHandler";
+import "dotenv/config";
 
 const app = express();
 
