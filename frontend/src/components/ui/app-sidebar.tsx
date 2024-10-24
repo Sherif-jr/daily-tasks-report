@@ -9,7 +9,7 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from "@/components/ui/sidebar";
-import { User, LayoutDashboard, NotepadText } from "lucide-react";
+import { User } from "lucide-react";
 import { useLocation, useNavigate } from "react-router-dom";
 
 export function AppSidebar() {
